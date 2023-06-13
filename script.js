@@ -77,6 +77,7 @@ function dragonBladeAttack() {
     attackStatus(apCost)
     fungusStatus(hpDamage)
 }
+
 function starFireAttack() {
     console.log('starFireAttack');
 
@@ -103,7 +104,9 @@ function fungusStatus(hpDamage) {
     // check if less than 0
     if (hpTotal < 0) {
         hpTotal = 0;
-        // ADD Change state: walk => dead
+        // Change state: walk => dead
+        $('.freaky-fungus').removeClass('walk')
+        $('.freaky-fungus').addClass('dead')
 
     }
     console.log('HP total:', hpTotal);
@@ -122,18 +125,17 @@ function attackStatus(apCost) {
     // check if less than 0
     if (apTotal < 0) {
         apTotal = 0;
-        // ADD Change state walk => jump
+        // Change state walk => jump
+        $('.freaky-fungus').removeClass('walk')
+        $('.freaky-fungus').addClass('jump')
         // ADD Change state buttons disabled
+        $('.attack-btn').attr('disabled','')
     }
+
+
     console.log('AP total:', apTotal);
     // Change text on DOM)
     $('.ap-text').text(`${apTotal} AP`)
     // Change progress amount
     $('#ap-meter').val(apTotal)
 }
-
-
-
-// check if hp == 0, if so it's dead, 
-// else check if AP = 0, if so it's dead
-// else they're both alive
