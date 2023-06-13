@@ -110,7 +110,8 @@ function fungusStatus(hpDamage) {
   $("#hp-meter").val(hpTotal);
 
   if (hpTotal < 50) {
-    mushroomRegeneration();
+    setInterval(mushroomRegeneration, 1000);
+    // mushroomRegeneration();
   }
 }
 
@@ -136,22 +137,16 @@ function attackStatus(apCost) {
   $("#ap-meter").val(apTotal);
 }
 
-
 function mushroomRegeneration() {
-setInterval(countUp, 1000);
-
-  function countUp() {
-    if (hpTotal < 50) {
-      hpTotal++;
-      console.log("New:", hpTotal);
-  // Change text on DOM)
-  $(".hp-text").text(`${hpTotal} HP`);
-  // Change progress amount
-  $("#hp-meter").val(hpTotal);
-      // setInterval(countup, 1000)
-    } else {
-      clearInterval();
-    }
+  if (hpTotal < 50) {
+    hpTotal++;
+    console.log("New:", hpTotal);
+    // Change text on DOM)
+    $(".hp-text").text(`${hpTotal} HP`);
+    // Change progress amount
+    $("#hp-meter").val(hpTotal);
+    // setInterval(countup, 1000)
+  } else {
+    clearInterval();
   }
-
 }
