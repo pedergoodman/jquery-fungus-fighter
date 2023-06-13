@@ -1,18 +1,38 @@
 $(document).ready(onReady);
 
 // State Variables can be declared outside of the onReady
-// Feel free to make this to what you want!
-// Example:
-// let fungusHP = 100;
+let fungusHP = 100;
+let mageAP = 100;
+let Attacks = [
+    { arcaneScepter: {apCost: 12, hpDamage: 14} },
+
+    { entangle: {apCost: 23, hpDamage: 9} },
+    
+    { dragonBlade: {apCost: 38, hpDamage: 47} },
+    
+    { starFire: {apCost: 33, hpDamage: 25} }       
+]
+
+
 
 function onReady() {
-    
-    // Make sure you check the index.html file! 
-    // There are lots of buttons and things ready for you to hook into here!
-    
-    
     // 🧠 Remember
     // - Handle events that ->
     // - Updates state which is ->
     // - Rendered to the DOM
+
+    $('.arcane-scepter').on('click', arcaneScepterAttack)
+
 }
+
+
+function arcaneScepterAttack() {
+    console.log('in arcaneScepterAttack');
+    
+
+}
+
+
+
+
+
