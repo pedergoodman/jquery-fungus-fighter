@@ -40,13 +40,9 @@ function arcaneScepterAttack() {
     console.log('Attack Points paid:', apCost);
     console.log('Damage dealt:', hpDamage);
 
-    // Update AP & HP
-    fungusTotalHP -= hpDamage;
-    mageTotalAP -= apCost;
-
     // send to conditions and DOM render
-    fungusStatus(fungusTotalHP)
-    attackStatus(mageTotalAP)
+    attackStatus(apCost)
+    fungusStatus(hpDamage)
 
 }
 function entangleAttack() {}
@@ -55,22 +51,45 @@ function starFireAttack() {}
 
 // Update AP & HP states
 
-function fungusStatus() {
-    // Update HP fungusTotalHP
+function fungusStatus(hpDamage) {
+    console.log('in fungusStatus:', hpDamage);
 
-    // If <= 0, == 0
-    // If == 0, walk => dead
-    // => change text (new function?)
-    // => change progress amount
+    // Update HP fungusTotalHP
+    fungusTotalHP -= hpDamage;
+    // check if less than 0
+    if (fungusTotalHP < 0) {
+        fungusTotalHP = 0;
+        // ADD Change state: walk => dead
+
+    }
+    console.log('HP total:', fungusTotalHP);
+    
+    // Change text on DOM)
+    let test = $('.hp-text').text(`${fungusTotalHP} HP`)
+    // Change progress amount
+    $('#hp-meter').val(fungusTotalHP);
 }
 
-function attackStatus() {
-    // Update HP fungusTotalHP
-    // If <= 0, == 0
-    // If AP == 0, walk => jump && buttons disabled
-    // => change text (new function?)
-    // => change progress amount
+function attackStatus(apCost) {
+    console.log('in attackStatus:', apCost);
+
+    // Update HP mageTotalAP
+    mageTotalAP -= apCost;
+    // check if less than 0
+    if (mageTotalAP < 0) {
+        mageTotalAP = 0;
+        // ADD Change state walk => jump
+        // ADD Change state buttons disabled
+    }
+    console.log('AP total:', mageTotalAP);
+    // Change text on DOM)
+    $('.ap-text').text(`${mageTotalAP} AP`)
+    // Change progress amount
+    $('#ap-meter').val(mageTotalAP)
 }
 
 
 
+// check if hp == 0, if so it's dead, 
+// else check if AP = 0, if so it's dead
+// else they're both alive
