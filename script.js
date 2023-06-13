@@ -90,7 +90,6 @@ function starFireAttack() {
 }
 
 // Update AP & HP states
-
 function fungusStatus(hpDamage) {
   // console.log('in fungusStatus:', hpDamage);
 
@@ -106,9 +105,13 @@ function fungusStatus(hpDamage) {
   console.log("HP total:", hpTotal);
 
   // Change text on DOM)
-  let test = $(".hp-text").text(`${hpTotal} HP`);
+  $(".hp-text").text(`${hpTotal} HP`);
   // Change progress amount
   $("#hp-meter").val(hpTotal);
+
+  if (hpTotal < 50) {
+    mushroomRegeneration();
+  }
 }
 
 function attackStatus(apCost) {
@@ -131,4 +134,24 @@ function attackStatus(apCost) {
   $(".ap-text").text(`${apTotal} AP`);
   // Change progress amount
   $("#ap-meter").val(apTotal);
+}
+
+
+function mushroomRegeneration() {
+setInterval(countUp, 1000);
+
+  function countUp() {
+    if (hpTotal < 50) {
+      hpTotal++;
+      console.log("New:", hpTotal);
+  // Change text on DOM)
+  $(".hp-text").text(`${hpTotal} HP`);
+  // Change progress amount
+  $("#hp-meter").val(hpTotal);
+      // setInterval(countup, 1000)
+    } else {
+      clearInterval();
+    }
+  }
+
 }
