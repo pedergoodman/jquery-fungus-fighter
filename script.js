@@ -5,137 +5,130 @@ let hpTotal = 100;
 let apTotal = 100;
 
 let attacks = {
-    arcaneScepter: {apCost: 12, hpDamage: 14},
-    entangle: {apCost: 23, hpDamage: 9},
-    dragonBlade: {apCost: 38, hpDamage: 47},
-    starFire: {apCost: 33, hpDamage: 25}
-}
-
-
-
+  arcaneScepter: { apCost: 12, hpDamage: 14 },
+  entangle: { apCost: 23, hpDamage: 9 },
+  dragonBlade: { apCost: 38, hpDamage: 47 },
+  starFire: { apCost: 33, hpDamage: 25 },
+};
 
 function onReady() {
-    // 🧠 Remember
-    // - Handle events that ->
-    // - Updates state which is ->
-    // - Rendered to the DOM
+  // 🧠 Remember
+  // - Handle events that ->
+  // - Updates state which is ->
+  // - Rendered to the DOM
 
-    // Attack Buttons
-    $('.arcane-scepter').on('click', arcaneScepterAttack);
-    $('.entangle').on('click', entangleAttack);
-    $('.dragon-blade').on('click', dragonBladeAttack);
-    $('.star-fire').on('click', starFireAttack);
-
+  // Attack Buttons
+  $(".arcane-scepter").on("click", arcaneScepterAttack);
+  $(".entangle").on("click", entangleAttack);
+  $(".dragon-blade").on("click", dragonBladeAttack);
+  $(".star-fire").on("click", starFireAttack);
 }
 
 // Event Managers for Attack Buttons
 function arcaneScepterAttack() {
-    console.log('arcaneScepterAttack');
+  console.log("arcaneScepterAttack");
 
-    // AP cost paid 
-    let apCost = attacks.arcaneScepter.apCost;
-    // HP damage taken
-    let hpDamage = attacks.arcaneScepter.hpDamage;
+  // AP cost paid
+  let apCost = attacks.arcaneScepter.apCost;
+  // HP damage taken
+  let hpDamage = attacks.arcaneScepter.hpDamage;
 
-    console.log('AP Cost:', apCost);
-    console.log('Damage:', hpDamage);
+  console.log("AP Cost:", apCost);
+  console.log("Damage:", hpDamage);
 
-    // send to conditions and DOM render
-    attackStatus(apCost)
-    fungusStatus(hpDamage)
-
+  // send to conditions and DOM render
+  attackStatus(apCost);
+  fungusStatus(hpDamage);
 }
 
 function entangleAttack() {
-    console.log('entangleAttack');
+  console.log("entangleAttack");
 
-    // AP cost paid 
-    let apCost = attacks.entangle.apCost;
-    // HP damage taken
-    let hpDamage = attacks.entangle.hpDamage;
+  // AP cost paid
+  let apCost = attacks.entangle.apCost;
+  // HP damage taken
+  let hpDamage = attacks.entangle.hpDamage;
 
-    console.log('AP Cost:', apCost);
-    console.log('Damage:', hpDamage);
+  console.log("AP Cost:", apCost);
+  console.log("Damage:", hpDamage);
 
-    // send to conditions and DOM render
-    attackStatus(apCost)
-    fungusStatus(hpDamage)
+  // send to conditions and DOM render
+  attackStatus(apCost);
+  fungusStatus(hpDamage);
 }
 
 function dragonBladeAttack() {
-    console.log('dragonBladeAttack');
+  console.log("dragonBladeAttack");
 
-    // AP cost paid 
-    let apCost = attacks.dragonBlade.apCost;
-    // HP damage taken
-    let hpDamage = attacks.dragonBlade.hpDamage;
+  // AP cost paid
+  let apCost = attacks.dragonBlade.apCost;
+  // HP damage taken
+  let hpDamage = attacks.dragonBlade.hpDamage;
 
-    console.log('AP Cost:', apCost);
-    console.log('Damage:', hpDamage);
+  console.log("AP Cost:", apCost);
+  console.log("Damage:", hpDamage);
 
-    // send to conditions and DOM render
-    attackStatus(apCost)
-    fungusStatus(hpDamage)
+  // send to conditions and DOM render
+  attackStatus(apCost);
+  fungusStatus(hpDamage);
 }
 
 function starFireAttack() {
-    console.log('starFireAttack');
+  console.log("starFireAttack");
 
-    // AP cost paid 
-    let apCost = attacks.starFire.apCost;
-    // HP damage taken
-    let hpDamage = attacks.starFire.hpDamage;
+  // AP cost paid
+  let apCost = attacks.starFire.apCost;
+  // HP damage taken
+  let hpDamage = attacks.starFire.hpDamage;
 
-    console.log('AP Cost:', apCost);
-    console.log('Damage:', hpDamage);
+  console.log("AP Cost:", apCost);
+  console.log("Damage:", hpDamage);
 
-    // send to conditions and DOM render
-    attackStatus(apCost)
-    fungusStatus(hpDamage)
+  // send to conditions and DOM render
+  attackStatus(apCost);
+  fungusStatus(hpDamage);
 }
 
 // Update AP & HP states
 
 function fungusStatus(hpDamage) {
-    // console.log('in fungusStatus:', hpDamage);
+  // console.log('in fungusStatus:', hpDamage);
 
-    // Update HP hpTotal
-    hpTotal -= hpDamage;
-    // check if less than 0
-    if (hpTotal < 0) {
-        hpTotal = 0;
-        // Change state: walk => dead
-        $('.freaky-fungus').removeClass('walk')
-        $('.freaky-fungus').addClass('dead')
+  // Update HP hpTotal
+  hpTotal -= hpDamage;
+  // check if less than 0
+  if (hpTotal < 0) {
+    hpTotal = 0;
+    // Change state: walk => dead
+    $(".freaky-fungus").removeClass("walk");
+    $(".freaky-fungus").addClass("dead");
+  }
+  console.log("HP total:", hpTotal);
 
-    }
-    console.log('HP total:', hpTotal);
-    
-    // Change text on DOM)
-    let test = $('.hp-text').text(`${hpTotal} HP`)
-    // Change progress amount
-    $('#hp-meter').val(hpTotal);
+  // Change text on DOM)
+  let test = $(".hp-text").text(`${hpTotal} HP`);
+  // Change progress amount
+  $("#hp-meter").val(hpTotal);
 }
 
 function attackStatus(apCost) {
-    // console.log('in attackStatus:', apCost);
+  // console.log('in attackStatus:', apCost);
 
-    // Update HP apTotal
-    apTotal -= apCost;
-    // check if less than 0
-    if (apTotal < 0) {
-        apTotal = 0;
-        // Change state walk => jump
-        $('.freaky-fungus').removeClass('walk')
-        $('.freaky-fungus').addClass('jump')
-        // ADD Change state buttons disabled
-        $('.attack-btn').attr('disabled','')
-    }
+  // Update HP apTotal
+  apTotal -= apCost;
+  // check if less than 0
+  if (apTotal < 0) {
+    apTotal = 0;
+    // Change state walk => jump
+    $(".freaky-fungus").removeClass("walk");
+    $(".freaky-fungus").addClass("jump");
+    // ADD Change state buttons disabled
+    $(".attack-btn").attr("disabled", "");
+  }
 
-
-    console.log('AP total:', apTotal);
-    // Change text on DOM)
-    $('.ap-text').text(`${apTotal} AP`)
-    // Change progress amount
-    $('#ap-meter').val(apTotal)
+  console.log("AP total:", apTotal);
+  // Change text on DOM)
+  $(".ap-text").text(`${apTotal} AP`);
+  // Change progress amount
+  $("#ap-meter").val(apTotal);
 }
