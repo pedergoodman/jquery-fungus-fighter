@@ -46,6 +46,7 @@ If the Freaky Fungus' HP falls below 50, have it regenerate 1 HP every second.
 > HINT: Look up the built in `setInterval()` function!
 
 
+
 ## Attacks
 
 ### ![arcane scepter](./images/arcane-scepter.png) Arcane Scepter
