@@ -57,9 +57,18 @@ Kill the Freaky Fungus.
 
 **Checklist**
 - [x] link First Attack Button to click event
-- [ ] create function for button click
+- [x] create event handler for attack
 - [x] create variables for HP, AP, and Attacks
 
 
-- [ ] Update variables 
-- [ ] 
+
+// flow, what needs to happen?
+1. button clicks
+2. attack properties grabbed
+3. new HP & AP calculated
+4. check for conditions
+    - HP <= 0? => animation
+    - AP <= 0? => animation and button disable
+5. update DOM
+    - HP text
+    - AP text
